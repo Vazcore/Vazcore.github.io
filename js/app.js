@@ -15,7 +15,7 @@
       Object.assign(this, newsData);
     }
     getPublishDate() {
-      return new Date(this.publishedAt).toDateString();
+      return new Date(this.publishedAt).toLocaleString('en-US', {day: 'numeric', month: 'short', year:'numeric'});
     }
   }
 
