@@ -1,3 +1,6 @@
+import 'whatwg-fetch';
+import "babel-polyfill";
+
 (() => {
   
   const config = { 

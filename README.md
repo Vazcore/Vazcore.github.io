@@ -3,9 +3,11 @@
 Web Page: https://vazcore.github.io/
 
 ### Main project installation
-
 - npm i
-- npm run build
+- npm run start
+
+### Build prod version
+ - npm run build
 
 
 # Tasks
