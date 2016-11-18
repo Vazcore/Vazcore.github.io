@@ -49,6 +49,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     newsBlock = document.querySelector('#articles');
     loaderBlock = document.querySelector('#pageLoader');
 
+    loadIEStyles();
+
     getNews().then(function (response) {
       return onNews(response);
     }).catch(function (err) {
@@ -86,6 +88,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     newsBlock.insertAdjacentHTML('beforeEnd', news_html);
     loaderBlock.style.display = 'none';
+  }
+
+  function loadIEStyles() {
+    if (navigator.userAgent.match(/MSIE 10/) || navigator.userAgent.match(/rv:11/)) {
+
+      var headID = document.getElementsByTagName("head")[0];
+      var newLink = document.createElement('link');
+
+      newLink.rel = 'stylesheet';
+      newLink.type = 'text/css';
+      newLink.href = 'css/ie10.css';
+
+      headID.appendChild(newLink);
+    }
   }
 
   function putNewsToHtml(n) {
