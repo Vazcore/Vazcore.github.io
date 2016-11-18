@@ -2,7 +2,8 @@
   
   const config = { 
     apiKey: '92f1fd097fdd418d9c49feffcf62f5d0', 
-    bbcNewsUri:  'https://newsapi.org/v1/articles?source=bbc-news'
+    bbcNewsUri:  'https://newsapi.org/v1/articles?source=bbc-news',
+    custom_error: 'Sorry. News temporarily unabalilable!'
   };
   const request = new Request(config.bbcNewsUri + '&apiKey=' + config.apiKey);
   const initRequest = { method: 'GET', mode: 'cors' };
@@ -89,8 +90,10 @@
 
   // show error
   function onError(err) {
-    errorBlock.textContent = err;
+    errorBlock.textContent = config.custom_error;    
     errorBlock.style.display = 'block';
+
+    console.log(err);
   }
 
 })();

@@ -8,7 +8,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   var config = {
     apiKey: '92f1fd097fdd418d9c49feffcf62f5d0',
-    bbcNewsUri: 'https://newsapi.org/v1/articles?source=bbc-news'
+    bbcNewsUri: 'https://newsapi.org/v1/articles?source=bbc-news',
+    custom_error: 'Sorry. News temporarily unabalilable!'
   };
   var request = new Request(config.bbcNewsUri + '&apiKey=' + config.apiKey);
   var initRequest = { method: 'GET', mode: 'cors' };
@@ -26,7 +27,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     _createClass(News, [{
       key: 'getPublishDate',
       value: function getPublishDate() {
-        return new Date(this.publishedAt).toDateString();
+        return new Date(this.publishedAt).toLocaleString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
       }
     }]);
 
@@ -135,7 +136,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   // show error
   function onError(err) {
-    errorBlock.textContent = err;
+    errorBlock.textContent = config.custom_error;
     errorBlock.style.display = 'block';
+
+    console.log(err);
   }
 })();
