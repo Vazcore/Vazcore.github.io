@@ -6,8 +6,7 @@ import testObj from './test.js';
   // init
   document.addEventListener("DOMContentLoaded", init);
 
-  function init() {
-    console.log(testObj);
+  function init() {    
     let loaderButton = document.querySelector('#load');
     loaderButton.addEventListener('click', (e) => {
       loaderButton.style.display = 'none';
@@ -33,6 +32,8 @@ import testObj from './test.js';
 
     if (!PRODUCTION) {
       console.log('Development Mode!');
+      console.log('Object without numbers:');
+      console.log(testObj);
     }
   }
 

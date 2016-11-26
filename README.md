@@ -12,6 +12,12 @@ Web Page: https://vazcore.github.io/
 
 # Tasks
 
+## Webpack
+
+### Custom loaders
+
+- ag_remove_numbers
+
 ## Babel-plugin
 
 ### Installation 
