@@ -6,6 +6,7 @@ module.exports = function (source) {
   
   var new_source = json_string.replace(/{\"\w+\":\d+,/gi, '{')
   .replace(/\"\w+\":\d+,/gi, '')
-  .replace(/,\"\w+\":\d+}/gi, '}');  
+  .replace(/,\"\w+\":\d+}/gi, '}')
+  .replace(/\"\w+\":\d+/gi, '');  
   return new_source;
 };
