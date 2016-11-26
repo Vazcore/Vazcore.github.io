@@ -1,1 +1,0 @@
-export default {name: 'Alexey', age: 26, home: 111, address: 'Minsk', appartment: 222};

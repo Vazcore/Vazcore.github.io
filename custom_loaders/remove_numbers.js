@@ -1,5 +1,11 @@
-module.exports = function (source, map) {  
+module.exports = function (source) {  
   this.cacheable();
-  var new_source = source.replace(/,?[ ]?\w+:[ ]?\d+/gi, '');
-  this.callback(null, new_source, map);
+  // deleting whitespaces
+  var json_string = JSON.stringify(source).replace(/(?:\\[rn])+/g, '').replace(/ /g, '');
+  json_string = JSON.parse(json_string);
+  
+  var new_source = json_string.replace(/{\"\w+\":\d+,/gi, '{')
+  .replace(/\"\w+\":\d+,/gi, '')
+  .replace(/,\"\w+\":\d+}/gi, '}');  
+  return new_source;
 };

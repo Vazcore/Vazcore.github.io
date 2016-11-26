@@ -22,7 +22,11 @@ module.exports = {
         include: [
           path.resolve(__dirname, "js")
         ],
-        loaders: ['ag_remove_numbers', 'babel-loader?presets[]=es2015']
+        loaders: ['babel-loader?presets[]=es2015']
+      },
+      {
+        test: /\.json$/,
+        loaders: ['json-loader', 'ag_remove_numbers']
       },
       {
         test: /\.scss$/,

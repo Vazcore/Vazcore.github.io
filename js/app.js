@@ -1,5 +1,5 @@
 require('../style/styles.scss');
-import testObj from './test.js';
+import testObj from './test.json';
 
 (() => {
   

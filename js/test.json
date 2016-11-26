@@ -1,0 +1,14 @@
+{
+  "t": 1,
+  "name": "Test1",
+  "age": 234,
+  "home": 111,
+  "address": "Minsk",
+  "appartment": 222,
+  "user": {
+    "room": 23,
+    "titel": "Title",
+    "bag": 11
+  },
+  "ssd": 11
+}
