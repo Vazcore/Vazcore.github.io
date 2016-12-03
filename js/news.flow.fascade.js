@@ -41,6 +41,7 @@ export class NewsFlowFascade {
   }
 
   static loadResources(platform) {
+    console.log(platform);
     require.ensure([], () => {
       require('../style/news.scss');
       require('../style/gmaterials.scss');

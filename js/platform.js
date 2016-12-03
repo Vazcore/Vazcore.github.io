@@ -9,9 +9,9 @@ export default {
     } else if (platform.match(/firefox/)) {
       return 'FF';
     } else if (platform.match(/opera/)) {
-      return 'FF';
+      return 'OP';
     } else {
-      return 'CH';
+      return 'IE';
     } 
   }  
 };
