@@ -1,3 +1,5 @@
+import 'whatwg-fetch';
+import "babel-polyfill";
 import NewsSubject from './news.subject';
 import HeaderController from './header.controller';
 import { combineReducers, createStore } from './custom.redux';

@@ -1,5 +1,3 @@
-import 'whatwg-fetch';
-import "babel-polyfill";
 import config from './config';
 import { NewsBuilder } from './news.builder';
 

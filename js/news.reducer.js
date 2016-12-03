@@ -1,3 +1,6 @@
+import 'whatwg-fetch';
+import "babel-polyfill";
+
 let defaultState = new Map();
 export default (state = defaultState, action = {type:null,payload: {}} ) => {
   let newState = new Map();
