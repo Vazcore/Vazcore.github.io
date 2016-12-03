@@ -1,7 +1,7 @@
 import 'whatwg-fetch';
 import "babel-polyfill";
 import config from './config';
-import News from './news.class';
+import { NewsBuilder } from './news.builder';
 
 const request = new Request(config.bbcNewsUri + '&apiKey=' + config.apiKey);
 const requestConfig = { method: 'GET', mode: 'cors' };
@@ -9,15 +9,37 @@ const requestConfig = { method: 'GET', mode: 'cors' };
 let elements = {
   errorBlock: null,
   newsBlock: null,
-  loaderBlock: null
+  loaderBlock: null,
+  articlesList: null
 };
 
+let newsMap = new Map();
+let subject;
+let store;
+
 module.exports = class {
+  //init
+  static init(sub, st) {
+    subject = sub;
+    store = st;
+  }
+
   // load all elements
   static loadElements() {
     elements.errorBlock = document.querySelector('#error_block');
     elements.newsBlock = document.querySelector('#articles');
     elements.loaderBlock = document.querySelector('#pageLoader');
+    elements.articlesList = document.querySelector('#articles_list');
+
+    elements.newsBlock.addEventListener('click', (e) => {
+      const target = e.target;
+      if (target.getAttribute('id') === 'hideNews') {
+        let title = target.getAttribute('data-newstitle');
+        newsMap.delete(title);
+        subject.emit(newsMap);
+        store.dispatch({ type: 'REMOVE', payload: { key: title } });
+      }
+    });
   }
   static getElements() { return elements }
   // fetch all news
@@ -32,47 +54,41 @@ module.exports = class {
     });
   }
   // build dom elements
-  static onNews(news) {
+  static onNews(news) {    
     let news_html = '';
+    elements.articlesList.innerHTML = '';
     for (let n of news.values()) {
-      news_html += this.putNewsToHtml(n);
+      news_html += n.template;
     }
 
-    elements.newsBlock.insertAdjacentHTML('beforeEnd', news_html);
+    //elements.newsBlock.insertAdjacentHTML('beforeEnd', news_html);
+    elements.articlesList.innerHTML = news_html;
     elements.loaderBlock.style.display = 'none';
   }
-  // generating preview news html
-  static putNewsToHtml(n) {
-    let news_html = `
-    <article class="card radius shadowDepth1">
-        <div class="card__image border-tlr-radius">
-            <img src="${n.urlToImage}" alt="image" class="imgCard border-tlr-radius">
-        </div>
-        <div class="card__content card__padding">                    
-
-            <div class="card__meta">
-                <a href="http://www.bbc.co.uk/news" target="_blank">${n.author}</a>
-                <time>${n.getPublishDate()}</time>                
-            </div>
-
-            <article class="card__article">
-                <h2><a href="${n.url}" target="_blank">${n.title}</a></h2>
-                <p>${n.description}</p>
-            </article>
-        </div>
-      </article>
-    `;
-    return news_html;
-  }
+  
   // build news object and set to Set
   static buildNews(data) {
-    if (!data.articles) return [];
-    let news = new Map();
-    for (let n of data.articles) {
-      let newsModel = new News(n);        
-      news.set(newsModel.title, newsModel);
+    if (!data.articles) return [];    
+    for (let [index, value] of data.articles.entries()) {
+      // assume that our data contains "news category" property
+      let topic = index % 2 === 0 ? 'sport' : index % 3 === 0 ? 'weather' : 'hot';
+      let newsModel = new NewsBuilder();
+      newsModel.addData(value);
+      switch (topic) {
+        case 'hot':
+          newsModel.addHotLogo();
+          break;
+       case 'sport':
+          newsModel.addSportLogo();
+          break;
+        default:
+          newsModel.addWeatherLogo();
+          break;
+      }
+      const newsData = newsModel.build();
+      if (newsData !== null) newsMap.set(newsData.title, newsData);
     }
-    return news;
+    return newsMap;
   }
   // show error
   static onError(err) {

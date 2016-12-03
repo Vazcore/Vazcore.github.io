@@ -57,6 +57,26 @@ h2 {
     flex: 0 1 calc(33% - 1em);
     min-width: 200px;
     margin: 0.5%;
+
+    .close {
+        text-align: right;
+        i:hover {
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+}
+
+.card.sport {
+    background-color: #B2DFDB;
+}
+
+.card.hot {
+    background-color: #FFCDD2;
+}
+
+.card.weather{
+    background-color: #B3E5FC;
 }
 
 @media screen 
@@ -82,6 +102,7 @@ h2 {
 .card__image {
     min-height: 100px;
     background-color: #eee;
+    position: relative;
 }
 .card__image img {
     width: 100%;
@@ -93,10 +114,15 @@ h2 {
     position: relative;
 }
 
+.card__meta {
+    position: relative;
+}
+
 /* card meta */
 .card__meta time {
-    font-size: 1.1rem;
-    color: #bbb;
+    font-size: 0.9rem;
+    color: #444;
+    font-style: italic;
     margin-left: 0.8rem;
 }
 
@@ -246,3 +272,15 @@ h2 {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.card_logo {
+    width: 25%;
+    position: absolute;
+    right: 0px;
+    bottom: -20px;
+    
+    img {
+        width: 100%;
+    }
+}
+
