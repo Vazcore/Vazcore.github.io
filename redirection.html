@@ -41,8 +41,8 @@
       var a = document.getElementById('redirectionLink');
       a.setAttribute('href', redirectionURL);
       if (isAndroid) {
-        //window.open(redirectionURL, '_blank');
-        window.location.href = redirectionURL;
+        window.open(redirectionURL, '_blank');
+        //window.location.href = redirectionURL;
       }
       else {
         window.location.href = redirectionURL;
