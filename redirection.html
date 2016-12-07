@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <!--<meta http-equiv="refresh" content="1;url=aerlingus://verify?token">-->
+    <script type="text/javascript">
+    var redirectionURL;
+    var isAndroid;
+
+    if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
+      if (getURLParameter("xauth") != null) {
+        redirectionURL = "aerlingus://reset?token=" + getURLParameter("xauth");
+      } else {
+        redirectionURL = "aerlingus://verify?token=" + getURLParameter("token");
+      }
+    }
+    else if (navigator.userAgent.match(/android/i)) {
+      isAndroid = true;
+        if (getURLParameter("xauth") != null) {
+          redirectionURL = "aerlingus://reset?token=" + getURLParameter("xauth");
+        } else {
+          redirectionURL = "aerlingus://verify?token=" + getURLParameter("token");
+        }
+    }
+    else {
+      var token = getURLParameter("xauth");
+      if (token != null) {
+        urlBeginning = "/html/reset-password.html?token=";
+      } else {
+        token = getURLParameter("token");
+        urlBeginning = "/html/register-profile.html?token=";
+      }
+      redirectionURL = window.location.origin + urlBeginning + token;
+    }
+
+    function getURLParameter(name) {
+      return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null
+    }
+
+    window.onload = function() {
+      var a = document.getElementById('redirectionLink');
+      a.setAttribute('href', redirectionURL);
+      if (isAndroid) {
+        window.open(redirectionURL, '_blank');
+      }
+      else {
+        window.location.href = redirectionURL;
+      }
+    };
+
+    </script>
+    <title>Aer Lingus - Verify Profile</title>
+  </head>
+  <body>
+    If you are not redirected automatically, follow the <a id='redirectionLink'>link</a>
+  </body>
+</html>
