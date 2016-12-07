@@ -42,7 +42,8 @@
       a.setAttribute('href', redirectionURL);
       if (isAndroid) {
         //window.open(redirectionURL, '_blank');
-        window.location.href = redirectionURL;
+        //window.location.href = redirectionURL;
+        location.replace(redirectionURL);
       }
       else {
         window.location.href = redirectionURL;
