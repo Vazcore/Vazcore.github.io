@@ -37,22 +37,7 @@
       return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null
     }
 
-    // window.onload = function() {
-    //   var a = document.getElementById('redirectionLink');
-    //   a.setAttribute('href', redirectionURL);
-    //   if (isAndroid) {
-    //     //window.open(redirectionURL, '_blank');
-    //     // setTimeout(function () {
-    //     //   window.location.href = redirectionURL;
-    //     // }, 500);        
-    //     location.replace(redirectionURL);
-    //   }
-    //   else {
-    //     window.location.href = redirectionURL;
-    //   }
-    // };
-
-    function onRedirect() {
+    window.onload = function() {
       var a = document.getElementById('redirectionLink');
       a.setAttribute('href', redirectionURL);
       if (isAndroid) {
@@ -63,19 +48,32 @@
       else {
         window.location.href = redirectionURL;
       }
-    }
+    };
 
-    function listen(evnt, elem, func) {
-      if (elem.addEventListener)  // W3C DOM
-          elem.addEventListener(evnt,func,false);
-      else if (elem.attachEvent) { // IE DOM
-          var r = elem.attachEvent("on"+evnt, func);
-          return r;
-      }
-      else window.alert('Can not listen on load event!');
-    }
+    // function onRedirect() {
+    //   var a = document.getElementById('redirectionLink');
+    //   a.setAttribute('href', redirectionURL);
+    //   if (isAndroid) {
+    //     //window.open(redirectionURL, '_blank');
+    //     window.location.href = redirectionURL;        
+    //     //location.replace(redirectionURL);
+    //   }
+    //   else {
+    //     window.location.href = redirectionURL;
+    //   }
+    // }
 
-    listen("load", window, onRedirect);
+    // function listen(evnt, elem, func) {
+    //   if (elem.addEventListener)  // W3C DOM
+    //       elem.addEventListener(evnt,func,false);
+    //   else if (elem.attachEvent) { // IE DOM
+    //       var r = elem.attachEvent("on"+evnt, func);
+    //       return r;
+    //   }
+    //   else window.alert('Can not listen on load event!');
+    // }
+
+    // listen("load", window, onRedirect);
 
     </script>
     <title>Aer Lingus - Verify Profile</title>
