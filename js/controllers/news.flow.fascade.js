@@ -1,9 +1,9 @@
 import 'whatwg-fetch';
 import "babel-polyfill";
-import NewsSubject from './news.subject';
+import NewsSubject from '../redux/news.subject';
 import HeaderController from './header.controller';
-import { combineReducers, createStore } from './custom.redux';
-import newsReducer from './news.reducer';
+import { combineReducers, createStore } from '../redux/custom.redux';
+import newsReducer from '../reducers/news.reducer';
 
 export class NewsFlowFascade {
   
@@ -43,10 +43,10 @@ export class NewsFlowFascade {
   static loadResources(platform) {
     console.log(platform);
     require.ensure([], () => {
-      require('../style/news.scss');
-      require('../style/gmaterials.scss');
+      require('../../style/news.scss');
+      require('../../style/gmaterials.scss');
       let NewsController = require("./news.controller");
-      let crossBrowserTools = require('./crossstability');
+      let crossBrowserTools = require('../platform/crossstability');
       
       NewsController.init(this.newsSubject, this.store);
       

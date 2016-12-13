@@ -1,6 +1,6 @@
 require('../style/styles.scss');
-import platformDetector from './platform';
-import { NewsFlowFascade } from './news.flow.fascade';
+import platformDetector from './platform/platform';
+import { NewsFlowFascade } from './controllers/news.flow.fascade';
 import testObj from './test.json';
 
 (() => {

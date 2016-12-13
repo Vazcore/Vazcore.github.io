@@ -1,0 +1,6 @@
+[
+  { "_id": "sport", "title": "Sport", "parent": null },
+  { "_id": "money", "title": "Money", "parent": null },
+  { "_id": "weather", "title": "Weather", "parent": null },
+  { "_id": "finance", "title": "Finance", "parent": null }
+]

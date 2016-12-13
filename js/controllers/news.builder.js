@@ -1,4 +1,4 @@
-import News from './news.class';
+import News from '../models/news.class';
 
 export class NewsBuilder {
   constructor() {

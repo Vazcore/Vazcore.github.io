@@ -1,7 +1,7 @@
-import config from './config';
+import config from '../config';
 import { NewsBuilder } from './news.builder';
 
-const request = new Request(config.bbcNewsUri + '&apiKey=' + config.apiKey);
+const request = new Request(config.bbcNewsUri);
 const requestConfig = { method: 'GET', mode: 'cors' };
 
 let elements = {

@@ -1,0 +1,7 @@
+mongo ds133418.mlab.com:33418/camp1 -u alex_gaba -p squirt12
+
+mongoimport --host ds133418.mlab.com --port 33418 --db camp1 -u alex -p 1234 --collection grades --type json --file grades.json
+
+mongoimport --host ds133418.mlab.com --port 33418 --db camp1 -u alex -p 1234 --collection grades --type json --file news.json --jsonArray
+
+mongoimport --host ds133418.mlab.com --port 33418 --db camp1 -u alex -p 1234 --collection grades --type json --file categories.json --jsonArray
