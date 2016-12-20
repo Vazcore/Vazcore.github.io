@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+  head
+    title Login
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>  
+  body
+    div.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+      header.mdl-layout__header
+        div.mdl-layout__header-row      
+          span.mdl-layout-title            
+            block title
+      div.mdl-layout__drawer
+        span.mdl-layout-title Title
+        nav.mdl-navigation
+          a.mdl-navigation__link(href="/login") Login
+          a.mdl-navigation__link(href="/register") Register
+          a.mdl-navigation__link(href="/news") All News
+          a.mdl-navigation__link(href="/news/add") Add News
+          a.mdl-navigation__link(href="/login/logout") LogOut         
+  
+      main.mdl-layout__content
+        div.page-content
+          #content
+            block content

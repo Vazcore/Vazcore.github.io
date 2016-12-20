@@ -1,0 +1,31 @@
+extends ./layout
+block title
+ .title Add News
+
+block content
+  if errors
+    ul.errors
+      for error in errors
+        li= error.msg
+
+  form(action='/news',method='post',enctype="multipart/form-data")
+    p
+      div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        input.mdl-textfield__input(type="text",id="email1",name="title")
+        label.mdl-textfield__label(for="email1") Title...
+    p
+      div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        input.mdl-textfield__input(type="text",id="email1",name="author")
+        label.mdl-textfield__label(for="email1") Author...
+    p
+      div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        textarea.mdl-textfield__input(type="text",id="email1",name="description")
+        label.mdl-textfield__label(for="email1") Description...
+    
+    p
+      div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        input.mdl-textfield__input(type="file",id="email1",name="logo")
+   
+    button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored(type='submit') Add    
+
+   

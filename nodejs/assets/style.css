@@ -1,0 +1,26 @@
+#content {
+  padding: 12px;
+}
+
+.errors{
+  list-style: none;
+}
+
+.errors li{
+  color: red;
+  padding: 9px;
+  background-color: pink;
+}
+
+.news_block {
+  float: left;
+  margin: 15px;
+}
+
+.news_block img {
+  width: 100%;
+}
+
+.navigation {
+  float: right;
+}

@@ -1,0 +1,23 @@
+extends ./layout
+block title
+ .title Login
+
+block content  
+  if errors
+    ul.errors
+     for error in errors
+      li= error.msg
+      
+  form(action='/login',method='post')
+    p
+      div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        input.mdl-textfield__input(type="email",id="email1",name="username")
+        label.mdl-textfield__label(for="email1") Email...
+    p
+      div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        input.mdl-textfield__input(type="password",id="pass1",name="password")
+        label.mdl-textfield__label(for="pass1") Password...
+
+    button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored Login    
+
+   

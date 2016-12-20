@@ -1,0 +1,23 @@
+extends ./layout
+block title
+ .title Register
+
+block content  
+  form(action='/register',method='post')
+    p
+      div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        input.mdl-textfield__input(type="email",id="email1",name="email")
+        label.mdl-textfield__label(for="email1") Email...
+    p
+      div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        input.mdl-textfield__input(type="password",id="pass1",name="password")
+        label.mdl-textfield__label(for="pass1") Password...
+
+    p
+      div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        input.mdl-textfield__input(type="text",id="name1",name="name")
+        label.mdl-textfield__label(for="nam1") Name...
+
+    button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored(type='submit') Register    
+
+   
